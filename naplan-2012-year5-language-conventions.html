@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NAPLAN 2012 Year 5 Language Conventions</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; color: #1a1a2e; line-height: 1.6; }
+
+/* START SCREEN */
+#start-screen { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; }
+.start-card { background: #fff; border-radius: 16px; padding: 48px; max-width: 500px; width: 100%; box-shadow: 0 4px 24px rgba(0,0,0,0.1); text-align: center; }
+.start-card h1 { font-size: 1.8rem; color: #1a1a2e; margin-bottom: 4px; }
+.start-card h2 { font-size: 1.1rem; color: #666; font-weight: 400; margin-bottom: 32px; }
+.start-card .info { background: #f8f9fa; border-radius: 8px; padding: 16px; margin-bottom: 24px; text-align: left; font-size: 0.95rem; }
+.start-card .info p { margin-bottom: 6px; }
+.start-card label { display: block; text-align: left; font-weight: 600; margin-bottom: 6px; margin-top: 16px; }
+.start-card input, .start-card select { width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; transition: border-color 0.2s; }
+.start-card input:focus, .start-card select:focus { outline: none; border-color: #4361ee; }
+.btn { display: inline-block; padding: 14px 32px; border: none; border-radius: 8px; font-size: 1.05rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+.btn-primary { background: #4361ee; color: #fff; }
+.btn-primary:hover { background: #3a56d4; transform: translateY(-1px); }
+.btn-primary:disabled { background: #aaa; cursor: not-allowed; transform: none; }
+.btn-submit { background: #e74c3c; color: #fff; }
+.btn-submit:hover { background: #c0392b; }
+.start-card .btn { margin-top: 24px; width: 100%; }
+.error-msg { color: #e74c3c; font-size: 0.85rem; text-align: left; margin-top: 4px; display: none; }
+
+/* TEST SCREEN */
+#test-screen { display: none; max-width: 800px; margin: 0 auto; padding: 20px; padding-top: 80px; }
+.timer-bar { position: fixed; top: 0; left: 0; right: 0; background: #fff; border-bottom: 2px solid #e0e0e0; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.timer-bar .student-info { font-weight: 600; color: #555; }
+.timer-bar .timer { font-size: 1.3rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.timer.warning { color: #e74c3c; animation: pulse 1s infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+.timer-bar .progress-text { color: #666; font-size: 0.9rem; }
+.section-header { background: #4361ee; color: #fff; padding: 14px 20px; border-radius: 10px; margin: 24px 0 16px 0; font-size: 1.1rem; font-weight: 600; }
+.question-card { background: #fff; border-radius: 10px; padding: 24px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-left: 4px solid #4361ee; }
+.question-card .q-num { font-weight: 700; color: #4361ee; font-size: 0.95rem; margin-bottom: 8px; }
+.question-card .q-text { font-size: 1.05rem; margin-bottom: 14px; }
+.question-card .q-text b { color: #e74c3c; font-weight: 700; }
+.spelling-input { padding: 10px 14px; border: 2px solid #e0e0e0; border-radius: 6px; font-size: 1.05rem; width: 220px; transition: border-color 0.2s; }
+.spelling-input:focus { outline: none; border-color: #4361ee; }
+.mcq-options { list-style: none; }
+.mcq-options li { margin-bottom: 8px; }
+.mcq-options label { display: flex; align-items: flex-start; gap: 10px; padding: 10px 14px; border: 2px solid #e8e8e8; border-radius: 8px; cursor: pointer; transition: all 0.15s; font-size: 0.98rem; }
+.mcq-options label:hover { background: #f0f4ff; border-color: #b8c9ff; }
+.mcq-options input[type="radio"] { margin-top: 3px; accent-color: #4361ee; flex-shrink: 0; }
+.mcq-options input[type="radio"]:checked + span { font-weight: 600; }
+.mcq-options label:has(input:checked) { background: #eef2ff; border-color: #4361ee; }
+.context-box { background: #f8f9fa; border: 1px solid #ddd; border-radius: 8px; padding: 18px; margin-bottom: 14px; font-size: 0.98rem; }
+.context-box .passage-title { font-weight: 700; text-align: center; margin-bottom: 4px; }
+.context-box .passage-subtitle { font-style: italic; text-align: center; margin-bottom: 12px; color: #555; }
+.context-box .blank { display: inline-block; min-width: 100px; border-bottom: 2px solid #4361ee; text-align: center; color: #4361ee; font-weight: 600; margin: 0 2px; }
+.data-table { border-collapse: collapse; margin: 12px 0; width: auto; }
+.data-table th, .data-table td { border: 1px solid #aaa; padding: 8px 14px; text-align: left; }
+.data-table th { background: #e8e8e8; font-weight: 600; }
+.submit-area { text-align: center; padding: 32px 0; }
+
+/* RESULTS SCREEN */
+#results-screen { display: none; max-width: 800px; margin: 0 auto; padding: 20px; }
+.results-header { background: #fff; border-radius: 16px; padding: 36px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.1); margin-bottom: 24px; }
+.results-header h1 { font-size: 1.6rem; margin-bottom: 16px; }
+.score-display { font-size: 3rem; font-weight: 800; margin: 16px 0; }
+.score-display.excellent { color: #27ae60; }
+.score-display.good { color: #4361ee; }
+.score-display.okay { color: #f39c12; }
+.score-display.poor { color: #e74c3c; }
+.percentage { font-size: 1.3rem; color: #666; margin-bottom: 8px; }
+.score-bar-bg { width: 100%; height: 16px; background: #e8e8e8; border-radius: 8px; overflow: hidden; margin: 16px 0; }
+.score-bar-fill { height: 100%; border-radius: 8px; transition: width 1s ease; }
+.results-grid { display: grid; gap: 12px; }
+.result-item { background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); overflow: hidden; }
+.result-item.correct { border-left: 4px solid #27ae60; }
+.result-item.incorrect { border-left: 4px solid #e74c3c; }
+.result-summary { display: flex; gap: 14px; align-items: flex-start; padding: 18px; cursor: pointer; user-select: none; transition: background 0.15s; }
+.result-summary:hover { background: #f8f9fa; }
+.result-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+.result-detail { flex: 1; }
+.result-detail .result-q { font-weight: 700; font-size: 0.9rem; color: #888; }
+.result-detail .result-text { margin: 4px 0; font-size: 0.95rem; }
+.result-detail .your-answer { color: #e74c3c; }
+.result-detail .correct-answer { color: #27ae60; font-weight: 600; }
+.result-expand-hint { flex-shrink: 0; color: #aaa; font-size: 0.85rem; margin-top: 2px; transition: transform 0.2s; }
+.result-item.expanded .result-expand-hint { transform: rotate(180deg); }
+.result-question-preview { display: none; padding: 0 18px 18px 50px; border-top: 1px solid #eee; animation: slideDown 0.2s ease; }
+.result-item.expanded .result-question-preview { display: block; }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+.result-question-preview .preview-label { font-size: 0.8rem; font-weight: 600; color: #999; text-transform: uppercase; letter-spacing: 0.5px; margin: 12px 0 6px 0; }
+.result-question-preview .preview-content { font-size: 0.95rem; color: #333; line-height: 1.6; }
+.result-question-preview .preview-content b { color: #e74c3c; }
+.result-question-preview .preview-options { list-style: none; margin-top: 8px; }
+.result-question-preview .preview-options li { padding: 6px 10px; border-radius: 6px; margin-bottom: 4px; font-size: 0.93rem; }
+.result-question-preview .preview-options li.was-correct { background: #d4edda; color: #155724; font-weight: 600; }
+.result-question-preview .preview-options li.was-chosen-wrong { background: #f8d7da; color: #721c24; text-decoration: line-through; }
+.result-question-preview .preview-context { background: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px; margin-top: 6px; font-size: 0.93rem; color: #444; }
+.sheet-status { margin-top: 20px; padding: 14px; border-radius: 8px; font-size: 0.95rem; }
+.sheet-status.sending { background: #fff3cd; color: #856404; }
+.sheet-status.sent { background: #d4edda; color: #155724; }
+.sheet-status.failed { background: #f8d7da; color: #721c24; }
+.section-results-header { background: #4361ee; color: #fff; padding: 12px 20px; border-radius: 10px; margin: 20px 0 12px 0; font-weight: 600; }
+u { text-decoration-color: #4361ee; text-decoration-thickness: 2px; }
+@media (max-width: 600px) {
+  .start-card { padding: 28px 20px; }
+  #test-screen, #results-screen { padding: 12px; padding-top: 80px; }
+  .question-card { padding: 16px; }
+  .timer-bar { padding: 10px 14px; font-size: 0.9rem; }
+  .spelling-input { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ START SCREEN ============ -->
+<div id="start-screen">
+  <div class="start-card">
+    <h1>NAPLAN 2012</h1>
+    <h2>Year 5 Language Conventions</h2>
+    <div class="info">
+      <p><strong>Questions:</strong> 51 (Q1&ndash;25 Spelling, Q26&ndash;51 Grammar &amp; Punctuation)</p>
+      <p><strong>Time Limit:</strong> 40 minutes</p>
+      <p><strong>Instructions:</strong> For spelling questions, type the correct spelling. For grammar questions, select the correct answer.</p>
+    </div>
+    <label for="student-name">Your Name</label>
+    <input type="text" id="student-name" placeholder="Enter your full name" autocomplete="off">
+    <div class="error-msg" id="name-error">Please enter your name.</div>
+    <label for="student-class">Your Class</label>
+    <select id="student-class">
+      <option value="">-- Select your class --</option>
+      <option value="5A">5A</option>
+      <option value="5EG">5EG</option>
+      <option value="5S">5S</option>
+    </select>
+    <div class="error-msg" id="class-error">Please select your class.</div>
+    <button class="btn btn-primary" id="start-btn" onclick="startTest()">Start Test</button>
+  </div>
+</div>
+
+<!-- ============ TEST SCREEN ============ -->
+<div id="test-screen">
+  <div class="timer-bar">
+    <div class="student-info" id="display-student"></div>
+    <div class="timer" id="timer">40:00</div>
+    <div class="progress-text" id="progress-text">0 / 51 answered</div>
+  </div>
+  <div id="questions-container"></div>
+  <div class="submit-area">
+    <button class="btn btn-submit" onclick="submitTest()" id="submit-btn">Submit Test</button>
+  </div>
+</div>
+
+<!-- ============ RESULTS SCREEN ============ -->
+<div id="results-screen">
+  <div class="results-header">
+    <h1>Test Results</h1>
+    <div id="results-name"></div>
+    <div class="score-display" id="score-display"></div>
+    <div class="percentage" id="percentage-display"></div>
+    <div class="score-bar-bg"><div class="score-bar-fill" id="score-bar"></div></div>
+    <div class="sheet-status sending" id="sheet-status">Sending results to your teacher...</div>
+  </div>
+  <div id="results-details"></div>
+</div>
+
+<script>
+// ===== QUESTION DATA =====
+const spellingQuestions = [
+  { num: 1, sentence: 'The referee blew the whistle to <b>resstart</b> the game.', misspelled: 'resstart', answer: 'restart' },
+  { num: 2, sentence: 'Kim is <b>saiving</b> all her pocket money for a new bike.', misspelled: 'saiving', answer: 'saving' },
+  { num: 3, sentence: 'On <b>rainie</b> days I stay inside and read a book.', misspelled: 'rainie', answer: 'rainy' },
+  { num: 4, sentence: 'The grass on the soccer <b>ovel</b> is wet.', misspelled: 'ovel', answer: 'oval' },
+  { num: 5, sentence: 'It is <b>posible</b> that it will snow later.', misspelled: 'posible', answer: 'possible' },
+  { num: 6, sentence: 'We must be <b>kwiet</b> when the baby is asleep.', misspelled: 'kwiet', answer: 'quiet' },
+  { num: 7, sentence: 'You must be careful when you <b>clime</b> a ladder.', misspelled: 'clime', answer: 'climb' },
+  { num: 8, sentence: 'I ran so fast I had a <b>stich</b> in my side.', misspelled: 'stich', answer: 'stitch' },
+  { num: 9, sentence: 'You should <b>meshure</b> the ingredients carefully when you are cooking.', misspelled: 'meshure', answer: 'measure' },
+  { num: 10, sentence: 'The animal <b>hospitle</b> takes care of sick pets.', misspelled: 'hospitle', answer: 'hospital' },
+  { num: 11, sentence: 'The teacher asked us to do some <b>revishun</b> before our test on Monday.', misspelled: 'revishun', answer: 'revision' },
+  { num: 12, sentence: 'We put some documents in a metal <b>cillinder</b> to use as a time capsule.', misspelled: 'cillinder', answer: 'cylinder' },
+  { num: 13, sentence: 'The family was <b>unnable</b> to buy enough tickets for the show.', misspelled: 'unnable', answer: 'unable' },
+  { num: 14, sentence: 'My best friend is <b>comeing</b> to my house in the holidays.', misspelled: 'comeing', answer: 'coming' },
+  { num: 15, sentence: 'We make fresh <b>juce</b> from the oranges we grow in our garden.', misspelled: 'juce', answer: 'juice' },
+  { num: 16, sentence: 'The spray from the <b>waterfal</b> splashed the people in the rowing boat.', misspelled: 'waterfal', answer: 'waterfall' },
+  { num: 17, sentence: 'It was a very <b>dramattic</b> storm with heavy showers and frequent lightning.', misspelled: 'dramattic', answer: 'dramatic' },
+  { num: 18, sentence: 'Mum <b>promissed</b> us a trip to the museum after we had swept up the leaves in the courtyard.', misspelled: 'promissed', answer: 'promised' },
+  { num: 19, sentence: 'The coach was <b>satisfyed</b> with the performance of the cricket team in the championship match.', misspelled: 'satisfyed', answer: 'satisfied' },
+  { num: 20, sentence: 'Good <b>balence</b> is necessary to ride a skateboard successfully.', misspelled: 'balence', answer: 'balance' },
+  { num: 21, sentence: 'The <b>parsel</b> came in brown wrapping paper tied with string.', misspelled: 'parsel', answer: 'parcel' },
+  { num: 22, sentence: 'He played the <b>instrament</b> so well that he was invited to give a concert at the community hall.', misspelled: 'instrament', answer: 'instrument' },
+  { num: 23, sentence: 'Gold is a precious mineral and is very <b>valuble</b>.', misspelled: 'valuble', answer: 'valuable' },
+  { num: 24, sentence: 'From the <b>begining</b>, the adventure story had many strange twists.', misspelled: 'begining', answer: 'beginning' },
+  { num: 25, sentence: 'The best time to start planting winter vegetables is when the cooler <b>autum</b> temperatures arrive.', misspelled: 'autum', answer: 'autumn' }
+];
+
+const grammarQuestions = [
+  {
+    num: 26,
+    question: 'Which word completes this sentence correctly?',
+    context: 'Before I walk across the street, I look in both directions to make sure I can cross ____.',
+    options: ['safe', 'safest', 'safely', 'safety'],
+    correct: 2
+  },
+  {
+    num: 27,
+    question: 'Where should the missing comma go in this sentence?',
+    context: 'I love picture books about horses dolphins and other animals.',
+    options: [
+      'I love picture, books about horses dolphins and other animals.',
+      'I love picture books about horses, dolphins and other animals.',
+      'I love picture books about horses dolphins, and other animals.',
+      'I love picture books about horses dolphins and other, animals.'
+    ],
+    correct: 1
+  },
+  {
+    num: 28,
+    question: 'Which word completes this sentence correctly?',
+    context: '____ the time I got home, my brother had already left for school.',
+    options: ['After', 'From', 'By', 'Until'],
+    correct: 2
+  },
+  {
+    num: 29,
+    question: 'Which sentence is punctuated correctly?',
+    options: [
+      "Annie doesn\u2019t know where the paints are kept.",
+      'Annie doesnt know where the paints are kept.',
+      "Annie does\u2019nt know where the paints are kept.",
+      "Annie do\u2019esnt know where the paints are kept."
+    ],
+    correct: 0
+  },
+  {
+    num: 30,
+    question: 'Which word in this sentence is an action verb?',
+    context: 'The girls <b>ran</b> up the steep hill, keen to beat their brother home.',
+    contextPlain: 'The girls ran up the steep hill, keen to beat their brother home.',
+    options: ['girls', 'ran', 'steep', 'keen'],
+    correct: 1
+  },
+  {
+    num: 31,
+    question: 'Which word completes the <b>first</b> gap (31) correctly?',
+    context: '<div class="passage-title">Attention all would-be softballers!</div><div class="passage-subtitle">We\'d like to invite you to play softball for Fairville.</div><p>Learn new skills and make new friends <span class="blank">(31)</span> having fun.</p><p>Come to <span class="blank">(32)</span> on Saturday 25th August at 10 am. Try softball and see if you like it.</p><p>If <span class="blank">(33)</span> ready to join the fun, bring plenty of cold water to drink and come and have a great time.</p>',
+    isPassageStart: true,
+    options: ['while', 'but', 'also', 'and'],
+    correct: 0
+  },
+  {
+    num: 32,
+    question: 'Which word completes the <b>second</b> gap (32) correctly?',
+    options: ['redglove park', 'redglove Park', 'Redglove Park', 'Redglove park'],
+    correct: 2
+  },
+  {
+    num: 33,
+    question: 'Which word completes the <b>third</b> gap (33) correctly?',
+    options: ["you\u2019re", "they\u2019re", 'your', 'their'],
+    correct: 0
+  },
+  {
+    num: 34,
+    question: 'In which sentence is there a mistake?',
+    options: [
+      'There is a lizard in my garden.',
+      'It likes to eat snails and worms.',
+      'It hiss at me if I come too close.',
+      'I think I will leave it alone.'
+    ],
+    correct: 2
+  },
+  {
+    num: 35,
+    question: 'Which word completes this sentence correctly?',
+    context: "Raj has ____ his key and he can\u2019t open the door.",
+    options: ['forget', 'forgets', 'forgot', 'forgotten'],
+    correct: 3
+  },
+  {
+    num: 36,
+    question: 'Which of these sentences is a command?',
+    options: [
+      'Tom wants a new bike.',
+      'Will you wait for me?',
+      'Rain is good for the garden.',
+      'Come over here.'
+    ],
+    correct: 3
+  },
+  {
+    num: 37,
+    question: 'Which option completes this sentence correctly?',
+    context: 'When I arrived at school today, I ____ straight to meet my friends.',
+    options: ['go', 'gone', 'went', 'had gone'],
+    correct: 2
+  },
+  {
+    num: 38,
+    question: 'Which sentence combines the information in the table correctly?',
+    context: '<table class="data-table"><tr><th>Type of animal</th><th>Number of shells</th><th>Where it lives</th></tr><tr><td>clam</td><td>two</td><td>ocean</td></tr><tr><td>snail</td><td>one</td><td>land</td></tr></table>',
+    options: [
+      'Snails and clams have one shell and two shells, and they live on land and in the ocean.',
+      'Clams live in the ocean and have two shells, while snails have only one shell and live on land.',
+      'Snails have one shell when they live on land, but clams have two shells when they live in the ocean.',
+      'Clams live in the ocean and snails live on land, while clams have two shells and snails have one shell.'
+    ],
+    correct: 1
+  },
+  {
+    num: 39,
+    question: 'Which pair of words completes this text correctly?',
+    context: 'The most popular flavours of ice-cream ____ vanilla and chocolate. ____ you know that both flavours come from beans?',
+    options: [
+      'are \u00a0\u00a0\u00a0 Do',
+      'is \u00a0\u00a0\u00a0\u00a0 Did',
+      'are \u00a0\u00a0\u00a0 Does',
+      'is \u00a0\u00a0\u00a0\u00a0 Do'
+    ],
+    correct: 0
+  },
+  {
+    num: 40,
+    question: 'Which word completes this sentence correctly?',
+    context: 'My favourite month is December ____ we finish school and go on holidays.',
+    options: ['then', 'when', 'where', 'therefore'],
+    correct: 1
+  },
+  {
+    num: 41,
+    question: 'Which is a correct sentence?',
+    options: [
+      'Yesterday at band practice, Phil beats the drum very loudly.',
+      'Dan blew into his flute and hits all the right notes.',
+      'Lin played the guitar and keeps time by tapping her foot.',
+      'Our band thinks the music teacher has taught us very well.'
+    ],
+    correct: 3
+  },
+  {
+    num: 42,
+    question: 'Which of these words <b>cannot</b> be used as a plural (to mean more than one)?',
+    options: ['feet', 'children', 'woman', 'mice'],
+    correct: 2
+  },
+  {
+    num: 43,
+    question: 'Which sentence is punctuated correctly?',
+    options: [
+      'Betty mixed the milk and eggs, added the flour, folded it, carefully through the batter and poured it all into the cake tin.',
+      'Betty mixed the milk and eggs, added the flour, folded it carefully through the batter and poured it all into the cake tin.',
+      'Betty mixed the milk and eggs, added the flour folded it carefully through the batter and poured it all into the cake tin.',
+      'Betty mixed the milk and eggs added the flour folded it carefully through the batter, and poured it all into the cake tin.'
+    ],
+    correct: 1
+  },
+  {
+    num: 44,
+    question: 'Which underlined word or words can be replaced with <b>They\'re</b>?',
+    context: 'Every year Tim and Sue go to the school fair. <u>There is</u> always a jumping castle. <u>There are</u> also many other rides that Tim and Sue love. <u>Their</u> uncle runs the giant slide. <u>They are</u> looking forward to the fair again this year.',
+    options: ['There is', 'There are', 'Their', 'They are'],
+    correct: 3
+  },
+  {
+    num: 45,
+    question: 'Which word in this sentence is an adverb (describes a verb)?',
+    context: 'The sleepy little wombat shuffled lazily along the rocky bush path.',
+    options: ['little', 'shuffled', 'lazily', 'rocky'],
+    correct: 2
+  },
+  {
+    num: 46,
+    question: 'In the second sentence, the pronoun <b>them</b> refers to:',
+    context: 'Numerous species of animals live in rainforests all over Earth. Millions of insects, reptiles, birds and mammals call <b>them</b> home.',
+    options: ['animals', 'rainforests', 'millions', 'mammals'],
+    correct: 1
+  },
+  {
+    num: 47,
+    question: 'Which underlined word can be left out of this sentence, without losing any information?',
+    context: 'We used <u>the</u> white <u>bread</u> when we ran out of <u>the</u> brown <u>bread</u>.',
+    options: ['the (before "white")', 'bread (first)', 'the (before "brown")', 'bread (second)'],
+    correct: 3
+  },
+  {
+    num: 48,
+    question: 'Which sentence is punctuated correctly?',
+    options: [
+      'Dad entered a fishing competition when he visited the Gulf of Carpentaria.',
+      'Dad entered a fishing competition when he visited the Gulf Of Carpentaria.',
+      'Dad entered a Fishing Competition when he visited the gulf of Carpentaria.',
+      'Dad entered a Fishing Competition when he visited the Gulf of Carpentaria.'
+    ],
+    correct: 0
+  },
+  {
+    num: 49,
+    question: 'Which option is punctuated correctly?',
+    options: [
+      'Pelicans are large water birds. They have pouches on their throats. That they can use to catch fish. They are good swimmers. And spend a lot of time on the water.',
+      'Pelicans are large water birds, they have pouches on their throats that they can use to catch fish, they are good swimmers and, spend a lot of time on the water.',
+      'Pelicans are large water birds. They have pouches on their throats. That they can use to catch fish. They are good swimmers and spend a lot of time on the water.',
+      'Pelicans are large water birds. They have pouches on their throats that they can use to catch fish. They are good swimmers and spend a lot of time on the water.'
+    ],
+    correct: 3
+  },
+  {
+    num: 50,
+    question: 'Which pair of words completes this sentence correctly?',
+    context: "____ exciting to see the sailing boat flying across the lake with ____ sails billowing in the wind.",
+    options: ['Its \u00a0\u00a0\u00a0 its', "It\u2019s \u00a0\u00a0\u00a0 it\u2019s", "It\u2019s \u00a0\u00a0\u00a0 its", "Its \u00a0\u00a0\u00a0 it\u2019s"],
+    correct: 2
+  },
+  {
+    num: 51,
+    question: 'What happened <b>first</b>?',
+    context: 'When Joe arrived home after his bike ride, he noticed that someone had finished the puzzle he had been working on.',
+    options: [
+      'Joe arrived home.',
+      'Joe went for a bike ride.',
+      'Someone finished the puzzle.',
+      'Joe worked on the puzzle.'
+    ],
+    correct: 3
+  }
+];
+
+// ===== GLOBAL STATE =====
+let studentName = '';
+let studentClass = '';
+let timerInterval = null;
+let timeRemaining = 40 * 60; // 40 minutes in seconds
+let testSubmitted = false;
+
+// ===== START TEST =====
+function startTest() {
+  const nameInput = document.getElementById('student-name');
+  const classSelect = document.getElementById('student-class');
+  const nameError = document.getElementById('name-error');
+  const classError = document.getElementById('class-error');
+
+  let valid = true;
+  nameError.style.display = 'none';
+  classError.style.display = 'none';
+
+  if (!nameInput.value.trim()) {
+    nameError.style.display = 'block';
+    valid = false;
+  }
+  if (!classSelect.value) {
+    classError.style.display = 'block';
+    valid = false;
+  }
+  if (!valid) return;
+
+  studentName = nameInput.value.trim();
+  studentClass = classSelect.value;
+
+  document.getElementById('start-screen').style.display = 'none';
+  document.getElementById('test-screen').style.display = 'block';
+  document.getElementById('display-student').textContent = studentName + ' \u2014 ' + studentClass;
+
+  renderQuestions();
+  startTimer();
+  updateProgress();
+}
+
+// ===== RENDER QUESTIONS =====
+function renderQuestions() {
+  const container = document.getElementById('questions-container');
+  let html = '';
+
+  // Spelling section
+  html += '<div class="section-header">Spelling \u2014 Questions 1 to 25</div>';
+  html += '<p style="background:#fff;padding:14px 18px;border-radius:8px;margin-bottom:16px;color:#555;font-size:0.95rem;">Each sentence contains a spelling mistake shown in <b style="color:#e74c3c">bold red</b>. Type the correct spelling in the box. Spellcheck is disabled.</p>';
+
+  spellingQuestions.forEach(q => {
+    html += `<div class="question-card" id="qcard-${q.num}">
+      <div class="q-num">Question ${q.num}</div>
+      <div class="q-text">${q.sentence}</div>
+      <input type="text" class="spelling-input" id="answer-${q.num}" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Type correct spelling" oninput="updateProgress()">
+    </div>`;
+  });
+
+  // Grammar section
+  html += '<div class="section-header">Grammar &amp; Punctuation \u2014 Questions 26 to 51</div>';
+  html += '<p style="background:#fff;padding:14px 18px;border-radius:8px;margin-bottom:16px;color:#555;font-size:0.95rem;">Select the correct answer for each question.</p>';
+
+  grammarQuestions.forEach(q => {
+    html += `<div class="question-card" id="qcard-${q.num}">
+      <div class="q-num">Question ${q.num}</div>
+      <div class="q-text">${q.question}</div>`;
+
+    if (q.context) {
+      if (q.isPassageStart) {
+        html += `<div class="context-box">${q.context}</div>`;
+      } else {
+        html += `<div class="context-box">${q.context}</div>`;
+      }
+    }
+
+    html += '<ul class="mcq-options">';
+    q.options.forEach((opt, i) => {
+      const letter = String.fromCharCode(65 + i);
+      html += `<li><label><input type="radio" name="answer-${q.num}" value="${i}" onchange="updateProgress()"><span>${letter}. ${opt}</span></label></li>`;
+    });
+    html += '</ul></div>';
+  });
+
+  container.innerHTML = html;
+}
+
+// ===== TIMER =====
+function startTimer() {
+  updateTimerDisplay();
+  timerInterval = setInterval(() => {
+    timeRemaining--;
+    updateTimerDisplay();
+    if (timeRemaining <= 300 && timeRemaining > 0) {
+      document.getElementById('timer').classList.add('warning');
+    }
+    if (timeRemaining <= 0) {
+      clearInterval(timerInterval);
+      if (!testSubmitted) submitTest(true);
+    }
+  }, 1000);
+}
+
+function updateTimerDisplay() {
+  const mins = Math.floor(timeRemaining / 60);
+  const secs = timeRemaining % 60;
+  document.getElementById('timer').textContent = mins.toString().padStart(2, '0') + ':' + secs.toString().padStart(2, '0');
+}
+
+// ===== PROGRESS =====
+function updateProgress() {
+  let answered = 0;
+  spellingQuestions.forEach(q => {
+    if (document.getElementById('answer-' + q.num).value.trim()) answered++;
+  });
+  grammarQuestions.forEach(q => {
+    if (document.querySelector('input[name="answer-' + q.num + '"]:checked')) answered++;
+  });
+  document.getElementById('progress-text').textContent = answered + ' / 51 answered';
+}
+
+// ===== SUBMIT TEST =====
+function submitTest(autoSubmit) {
+  if (testSubmitted) return;
+  if (!autoSubmit) {
+    let answered = 0;
+    spellingQuestions.forEach(q => { if (document.getElementById('answer-' + q.num).value.trim()) answered++; });
+    grammarQuestions.forEach(q => { if (document.querySelector('input[name="answer-' + q.num + '"]:checked')) answered++; });
+
+    if (answered < 51) {
+      if (!confirm('You have answered ' + answered + ' out of 51 questions. Are you sure you want to submit?')) return;
+    } else {
+      if (!confirm('Are you sure you want to submit your test?')) return;
+    }
+  }
+
+  testSubmitted = true;
+  clearInterval(timerInterval);
+  const results = markTest();
+  showResults(results);
+  sendToGoogleSheets(results);
+}
+
+// ===== MARK TEST =====
+function markTest() {
+  const results = [];
+  let score = 0;
+
+  // Mark spelling
+  spellingQuestions.forEach(q => {
+    const studentAnswer = document.getElementById('answer-' + q.num).value.trim();
+    const isCorrect = studentAnswer.toLowerCase() === q.answer.toLowerCase();
+    if (isCorrect) score++;
+    results.push({
+      num: q.num,
+      type: 'spelling',
+      sentence: q.sentence,
+      misspelled: q.misspelled,
+      studentAnswer: studentAnswer || '(no answer)',
+      correctAnswer: q.answer,
+      isCorrect: isCorrect
+    });
+  });
+
+  // Mark grammar
+  grammarQuestions.forEach(q => {
+    const selected = document.querySelector('input[name="answer-' + q.num + '"]:checked');
+    const studentIndex = selected ? parseInt(selected.value) : -1;
+    const isCorrect = studentIndex === q.correct;
+    if (isCorrect) score++;
+
+    const studentAnswer = studentIndex >= 0 ? q.options[studentIndex] : '(no answer)';
+    results.push({
+      num: q.num,
+      type: 'grammar',
+      question: q.question,
+      context: q.context || '',
+      options: q.options,
+      correctIndex: q.correct,
+      studentIndex: studentIndex,
+      studentAnswer: studentAnswer,
+      correctAnswer: q.options[q.correct],
+      isCorrect: isCorrect
+    });
+  });
+
+  return { results, score, total: 51, percentage: Math.round((score / 51) * 1000) / 10 };
+}
+
+// ===== SHOW RESULTS =====
+function showResults(data) {
+  document.getElementById('test-screen').style.display = 'none';
+  document.getElementById('results-screen').style.display = 'block';
+  window.scrollTo(0, 0);
+
+  document.getElementById('results-name').textContent = studentName + ' \u2014 ' + studentClass;
+
+  const scoreEl = document.getElementById('score-display');
+  scoreEl.textContent = data.score + ' / ' + data.total;
+  if (data.percentage >= 85) scoreEl.className = 'score-display excellent';
+  else if (data.percentage >= 65) scoreEl.className = 'score-display good';
+  else if (data.percentage >= 45) scoreEl.className = 'score-display okay';
+  else scoreEl.className = 'score-display poor';
+
+  document.getElementById('percentage-display').textContent = data.percentage + '%';
+
+  const bar = document.getElementById('score-bar');
+  let barColor = '#e74c3c';
+  if (data.percentage >= 85) barColor = '#27ae60';
+  else if (data.percentage >= 65) barColor = '#4361ee';
+  else if (data.percentage >= 45) barColor = '#f39c12';
+  bar.style.background = barColor;
+  setTimeout(() => { bar.style.width = data.percentage + '%'; }, 100);
+
+  // Build detailed results
+  let html = '';
+  let spellingCorrect = 0, grammarCorrect = 0;
+  data.results.forEach(r => {
+    if (r.type === 'spelling' && r.isCorrect) spellingCorrect++;
+    if (r.type === 'grammar' && r.isCorrect) grammarCorrect++;
+  });
+
+  html += `<div class="section-results-header">Spelling: ${spellingCorrect} / 25</div>`;
+  html += '<div class="results-grid">';
+  data.results.filter(r => r.type === 'spelling').forEach(r => {
+    html += `<div class="result-item ${r.isCorrect ? 'correct' : 'incorrect'}" id="result-${r.num}">
+      <div class="result-summary" onclick="toggleResult(${r.num})">
+        <div class="result-icon">${r.isCorrect ? '\u2705' : '\u274C'}</div>
+        <div class="result-detail">
+          <div class="result-q">Question ${r.num} \u2014 Misspelled: <b>${r.misspelled}</b></div>
+          ${r.isCorrect
+            ? '<div class="result-text correct-answer">Your answer: ' + r.studentAnswer + '</div>'
+            : '<div class="result-text"><span class="your-answer">Your answer: ' + r.studentAnswer + '</span><br><span class="correct-answer">Correct answer: ' + r.correctAnswer + '</span></div>'
+          }
+        </div>
+        <div class="result-expand-hint">\u25BC</div>
+      </div>
+      <div class="result-question-preview">
+        <div class="preview-label">Question</div>
+        <div class="preview-content">${r.sentence}</div>
+      </div>
+    </div>`;
+  });
+  html += '</div>';
+
+  html += `<div class="section-results-header">Grammar & Punctuation: ${grammarCorrect} / 26</div>`;
+  html += '<div class="results-grid">';
+  data.results.filter(r => r.type === 'grammar').forEach(r => {
+    let optionsHtml = '<ul class="preview-options">';
+    r.options.forEach((opt, i) => {
+      const letter = String.fromCharCode(65 + i);
+      let cls = '';
+      if (i === r.correctIndex) cls = 'was-correct';
+      else if (i === r.studentIndex && !r.isCorrect) cls = 'was-chosen-wrong';
+      optionsHtml += `<li class="${cls}">${letter}. ${opt}</li>`;
+    });
+    optionsHtml += '</ul>';
+
+    html += `<div class="result-item ${r.isCorrect ? 'correct' : 'incorrect'}" id="result-${r.num}">
+      <div class="result-summary" onclick="toggleResult(${r.num})">
+        <div class="result-icon">${r.isCorrect ? '\u2705' : '\u274C'}</div>
+        <div class="result-detail">
+          <div class="result-q">Question ${r.num}</div>
+          ${r.isCorrect
+            ? '<div class="result-text correct-answer">Your answer: ' + r.studentAnswer + '</div>'
+            : '<div class="result-text"><span class="your-answer">Your answer: ' + r.studentAnswer + '</span><br><span class="correct-answer">Correct answer: ' + r.correctAnswer + '</span></div>'
+          }
+        </div>
+        <div class="result-expand-hint">\u25BC</div>
+      </div>
+      <div class="result-question-preview">
+        <div class="preview-label">Question</div>
+        <div class="preview-content">${r.question}${r.context ? '<div class="preview-context">' + r.context + '</div>' : ''}</div>
+        <div class="preview-label">Options</div>
+        ${optionsHtml}
+      </div>
+    </div>`;
+  });
+  html += '</div>';
+
+  document.getElementById('results-details').innerHTML = html;
+}
+
+// ===== GOOGLE SHEETS =====
+// IMPORTANT: Replace this URL with your own Apps Script deployment URL
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbzpdYigz-ODQIFCSKirIUnHx4hkC1E4aZS9EGX07IgsxwNsKh3ufiq6WOmNNkQegmtm/exec';
+
+function sendToGoogleSheets(data) {
+  const statusEl = document.getElementById('sheet-status');
+
+  const payload = {
+    test: '2012 Year 5 Language Conventions',
+    'Student Name': studentName,
+    'Class': studentClass,
+    'Score': data.score,
+    'Total Questions': data.total,
+    'Percentage': data.percentage
+  };
+
+  data.results.forEach(r => {
+    payload['Q' + r.num] = r.isCorrect ? '\u2713' : r.studentAnswer;
+  });
+
+  fetch(SHEET_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify(payload)
+  }).then(() => {
+    statusEl.textContent = 'Results sent to your teacher successfully.';
+    statusEl.className = 'sheet-status sent';
+  }).catch(() => {
+    statusEl.textContent = 'Could not send results automatically. Please show this screen to your teacher.';
+    statusEl.className = 'sheet-status failed';
+  });
+}
+
+// ===== TOGGLE RESULT EXPAND =====
+function toggleResult(num) {
+  document.getElementById('result-' + num).classList.toggle('expanded');
+}
+
+// Warn before leaving during test
+window.addEventListener('beforeunload', function(e) {
+  if (!testSubmitted && document.getElementById('test-screen').style.display === 'block') {
+    e.preventDefault();
+    e.returnValue = '';
+  }
+});
+</script>
+</body>
+</html>
