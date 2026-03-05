@@ -199,7 +199,8 @@ const grammarQuestions = [
     question: 'Which word completes this sentence correctly?',
     context: 'Before I walk across the street, I look in both directions to make sure I can cross ____.',
     options: ['safe', 'safest', 'safely', 'safety'],
-    correct: 2
+    correct: 2,
+    explanation: 'We need an adverb to describe how you can cross the street. "Safely" is the adverb form of "safe" and tells us how the action is done.'
   },
   {
     num: 27,
@@ -211,14 +212,16 @@ const grammarQuestions = [
       'I love picture books about horses dolphins, and other animals.',
       'I love picture books about horses dolphins and other, animals.'
     ],
-    correct: 1
+    correct: 1,
+    explanation: 'When listing three or more items, commas go between each item. The list here is "horses, dolphins and other animals," so the comma belongs after "horses."'
   },
   {
     num: 28,
     question: 'Which word completes this sentence correctly?',
     context: '____ the time I got home, my brother had already left for school.',
     options: ['After', 'From', 'By', 'Until'],
-    correct: 2
+    correct: 2,
+    explanation: '"By the time" is a common phrase that means "before or at the moment when." It fits because the brother had already left before the speaker got home.'
   },
   {
     num: 29,
@@ -229,7 +232,8 @@ const grammarQuestions = [
       "Annie does\u2019nt know where the paints are kept.",
       "Annie do\u2019esnt know where the paints are kept."
     ],
-    correct: 0
+    correct: 0,
+    explanation: 'The contraction of "does not" is "doesn\'t." The apostrophe replaces the missing letter "o" and goes between the "n" and "t."'
   },
   {
     num: 30,
@@ -237,7 +241,8 @@ const grammarQuestions = [
     context: 'The girls <b>ran</b> up the steep hill, keen to beat their brother home.',
     contextPlain: 'The girls ran up the steep hill, keen to beat their brother home.',
     options: ['girls', 'ran', 'steep', 'keen'],
-    correct: 1
+    correct: 1,
+    explanation: '"Ran" is the action verb because it tells us what the girls did. "Girls" is a noun, while "steep" and "keen" are adjectives.'
   },
   {
     num: 31,
@@ -245,19 +250,22 @@ const grammarQuestions = [
     context: '<div class="passage-title">Attention all would-be softballers!</div><div class="passage-subtitle">We\'d like to invite you to play softball for Fairville.</div><p>Learn new skills and make new friends <span class="blank">(31)</span> having fun.</p><p>Come to <span class="blank">(32)</span> on Saturday 25th August at 10 am. Try softball and see if you like it.</p><p>If <span class="blank">(33)</span> ready to join the fun, bring plenty of cold water to drink and come and have a great time.</p>',
     isPassageStart: true,
     options: ['while', 'but', 'also', 'and'],
-    correct: 0
+    correct: 0,
+    explanation: '"While" means "at the same time as." You learn new skills and make friends while having fun -- all at the same time.'
   },
   {
     num: 32,
     question: 'Which word completes the <b>second</b> gap (32) correctly?',
     options: ['redglove park', 'redglove Park', 'Redglove Park', 'Redglove park'],
-    correct: 2
+    correct: 2,
+    explanation: 'Place names are proper nouns, so both words need capital letters. "Redglove Park" is the name of a specific place.'
   },
   {
     num: 33,
     question: 'Which word completes the <b>third</b> gap (33) correctly?',
     options: ["you\u2019re", "they\u2019re", 'your', 'their'],
-    correct: 0
+    correct: 0,
+    explanation: '"You\'re" is the contraction of "you are." The sentence is speaking directly to the reader: "If you are ready to join the fun..."'
   },
   {
     num: 34,
@@ -268,14 +276,16 @@ const grammarQuestions = [
       'It hiss at me if I come too close.',
       'I think I will leave it alone.'
     ],
-    correct: 2
+    correct: 2,
+    explanation: '"It hiss" is incorrect because "it" is singular, so the verb should be "hisses." When the subject is he, she, or it, we add -es to verbs ending in "s" sounds.'
   },
   {
     num: 35,
     question: 'Which word completes this sentence correctly?',
     context: "Raj has ____ his key and he can\u2019t open the door.",
     options: ['forget', 'forgets', 'forgot', 'forgotten'],
-    correct: 3
+    correct: 3,
+    explanation: 'The word "has" before the gap tells us we need the past participle. "Has forgotten" is the correct present perfect form of the verb "forget."'
   },
   {
     num: 36,
@@ -286,14 +296,16 @@ const grammarQuestions = [
       'Rain is good for the garden.',
       'Come over here.'
     ],
-    correct: 3
+    correct: 3,
+    explanation: 'A command (imperative sentence) tells someone to do something. "Come over here" gives a direct instruction, while the other sentences are statements or a question.'
   },
   {
     num: 37,
     question: 'Which option completes this sentence correctly?',
     context: 'When I arrived at school today, I ____ straight to meet my friends.',
     options: ['go', 'gone', 'went', 'had gone'],
-    correct: 2
+    correct: 2,
+    explanation: 'The sentence is about something that happened in the past ("arrived" tells us this). "Went" is the simple past tense of "go" and matches the past tense of the sentence.'
   },
   {
     num: 38,
@@ -305,7 +317,8 @@ const grammarQuestions = [
       'Snails have one shell when they live on land, but clams have two shells when they live in the ocean.',
       'Clams live in the ocean and snails live on land, while clams have two shells and snails have one shell.'
     ],
-    correct: 1
+    correct: 1,
+    explanation: 'This option groups all the information about each animal together clearly using "while" to compare them. It is the clearest and most natural way to combine the facts from the table.'
   },
   {
     num: 39,
@@ -317,14 +330,16 @@ const grammarQuestions = [
       'are \u00a0\u00a0\u00a0 Does',
       'is \u00a0\u00a0\u00a0\u00a0 Do'
     ],
-    correct: 0
+    correct: 0,
+    explanation: '"Flavours" is plural, so we need the plural verb "are." The second sentence asks "you" a question, and "Do you know..." is the correct way to form that question.'
   },
   {
     num: 40,
     question: 'Which word completes this sentence correctly?',
     context: 'My favourite month is December ____ we finish school and go on holidays.',
     options: ['then', 'when', 'where', 'therefore'],
-    correct: 1
+    correct: 1,
+    explanation: '"When" is used to talk about a time. December is a time "when" school finishes and holidays begin. "Where" is for places, not times.'
   },
   {
     num: 41,
@@ -335,13 +350,15 @@ const grammarQuestions = [
       'Lin played the guitar and keeps time by tapping her foot.',
       'Our band thinks the music teacher has taught us very well.'
     ],
-    correct: 3
+    correct: 3,
+    explanation: 'The other sentences mix past and present tense (e.g., "Yesterday... beats"). This sentence keeps the tenses consistent: "thinks" and "has taught" both work together correctly.'
   },
   {
     num: 42,
     question: 'Which of these words <b>cannot</b> be used as a plural (to mean more than one)?',
     options: ['feet', 'children', 'woman', 'mice'],
-    correct: 2
+    correct: 2,
+    explanation: '"Woman" is singular (just one). The plural of "woman" is "women." The other words -- feet, children, and mice -- are already plural forms.'
   },
   {
     num: 43,
@@ -352,35 +369,40 @@ const grammarQuestions = [
       'Betty mixed the milk and eggs, added the flour folded it carefully through the batter and poured it all into the cake tin.',
       'Betty mixed the milk and eggs added the flour folded it carefully through the batter, and poured it all into the cake tin.'
     ],
-    correct: 1
+    correct: 1,
+    explanation: 'Commas are used to separate actions in a list. Each step Betty takes is separated by a comma: "mixed..., added..., folded... and poured..." The comma must not split "folded it carefully" apart.'
   },
   {
     num: 44,
     question: 'Which underlined word or words can be replaced with <b>They\'re</b>?',
     context: 'Every year Tim and Sue go to the school fair. <u>There is</u> always a jumping castle. <u>There are</u> also many other rides that Tim and Sue love. <u>Their</u> uncle runs the giant slide. <u>They are</u> looking forward to the fair again this year.',
     options: ['There is', 'There are', 'Their', 'They are'],
-    correct: 3
+    correct: 3,
+    explanation: '"They\'re" is a contraction of "They are." Only "They are" can be replaced with "They\'re." "There" and "Their" are different words with different meanings.'
   },
   {
     num: 45,
     question: 'Which word in this sentence is an adverb (describes a verb)?',
     context: 'The sleepy little wombat shuffled lazily along the rocky bush path.',
     options: ['little', 'shuffled', 'lazily', 'rocky'],
-    correct: 2
+    correct: 2,
+    explanation: 'An adverb describes how a verb is done. "Lazily" describes how the wombat shuffled. The other words are adjectives (little, rocky) or a verb (shuffled).'
   },
   {
     num: 46,
     question: 'In the second sentence, the pronoun <b>them</b> refers to:',
     context: 'Numerous species of animals live in rainforests all over Earth. Millions of insects, reptiles, birds and mammals call <b>them</b> home.',
     options: ['animals', 'rainforests', 'millions', 'mammals'],
-    correct: 1
+    correct: 1,
+    explanation: 'The pronoun "them" refers to "rainforests." The animals call rainforests home -- they live in the rainforests.'
   },
   {
     num: 47,
     question: 'Which underlined word can be left out of this sentence, without losing any information?',
     context: 'We used <u>the</u> white <u>bread</u> when we ran out of <u>the</u> brown <u>bread</u>.',
     options: ['the (before "white")', 'bread (first)', 'the (before "brown")', 'bread (second)'],
-    correct: 3
+    correct: 3,
+    explanation: 'The second "bread" can be removed because we already know from the first part of the sentence that we are talking about bread. "...ran out of the brown" is still clear.'
   },
   {
     num: 48,
@@ -391,7 +413,8 @@ const grammarQuestions = [
       'Dad entered a Fishing Competition when he visited the gulf of Carpentaria.',
       'Dad entered a Fishing Competition when he visited the Gulf of Carpentaria.'
     ],
-    correct: 0
+    correct: 0,
+    explanation: 'Only proper nouns (names of specific places) need capital letters. "Gulf of Carpentaria" is a proper noun. "Fishing competition" is not a name, so it should not be capitalised.'
   },
   {
     num: 49,
@@ -402,14 +425,16 @@ const grammarQuestions = [
       'Pelicans are large water birds. They have pouches on their throats. That they can use to catch fish. They are good swimmers and spend a lot of time on the water.',
       'Pelicans are large water birds. They have pouches on their throats that they can use to catch fish. They are good swimmers and spend a lot of time on the water.'
     ],
-    correct: 3
+    correct: 3,
+    explanation: 'Each sentence must be a complete thought. The other options have sentence fragments (like "That they can use..." or "And spend...") or use commas where full stops are needed.'
   },
   {
     num: 50,
     question: 'Which pair of words completes this sentence correctly?',
     context: "____ exciting to see the sailing boat flying across the lake with ____ sails billowing in the wind.",
     options: ['Its \u00a0\u00a0\u00a0 its', "It\u2019s \u00a0\u00a0\u00a0 it\u2019s", "It\u2019s \u00a0\u00a0\u00a0 its", "Its \u00a0\u00a0\u00a0 it\u2019s"],
-    correct: 2
+    correct: 2,
+    explanation: '"It\'s" (with apostrophe) means "it is." "Its" (no apostrophe) shows ownership. The first gap means "It is exciting," so we need "It\'s." The second gap shows the boat\'s sails, so we need "its."'
   },
   {
     num: 51,
@@ -421,7 +446,8 @@ const grammarQuestions = [
       'Someone finished the puzzle.',
       'Joe worked on the puzzle.'
     ],
-    correct: 3
+    correct: 3,
+    explanation: 'The phrase "he had been working on" uses past perfect tense, which shows it happened before everything else. Joe worked on the puzzle first, then went for a bike ride, and then someone finished it.'
   }
 ];
 
@@ -605,7 +631,8 @@ function markTest() {
       studentIndex: studentIndex,
       studentAnswer: studentAnswer,
       correctAnswer: q.options[q.correct],
-      isCorrect: isCorrect
+      isCorrect: isCorrect,
+      explanation: q.explanation || ''
     });
   });
 
@@ -698,6 +725,7 @@ function showResults(data) {
         <div class="preview-content">${r.question}${r.context ? '<div class="preview-context">' + r.context + '</div>' : ''}</div>
         <div class="preview-label">Options</div>
         ${optionsHtml}
+        ${!r.isCorrect && r.explanation ? '<div class="preview-label">Explanation</div><div class="preview-content" style="color:#2563eb;font-style:italic;">' + r.explanation + '</div>' : ''}
       </div>
     </div>`;
   });

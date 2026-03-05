@@ -187,21 +187,24 @@ const grammarQuestions = [
     question: 'Which word completes this sentence correctly?',
     context: 'If she did not hurry, Jo knew she would be ____ for school.',
     options: ['late', 'later', 'latest', 'lately'],
-    correct: 0
+    correct: 0,
+    explanation: '"Late" is an adjective describing Jo\'s state. "Later" and "latest" are comparisons, and "lately" means "recently," which doesn\'t fit here.'
   },
   {
     num: 27,
     question: 'Which word completes this sentence correctly?',
     context: 'Our team is determined to do better ____ last year.',
     options: ['from', 'as', 'than', 'since'],
-    correct: 2
+    correct: 2,
+    explanation: 'When comparing two things (doing "better"), we use the word "than." For example: better than, faster than, taller than.'
   },
   {
     num: 28,
     question: 'Which word in this sentence describes how the tiger moved?',
     context: 'The sleek tiger moved carefully through the tall grass, searching constantly for food.',
     options: ['sleek', 'carefully', 'tall', 'constantly'],
-    correct: 1
+    correct: 1,
+    explanation: '"Carefully" is an adverb that describes how the tiger moved. "Sleek" and "tall" are adjectives describing nouns, and "constantly" describes how the tiger searched, not moved.'
   },
   {
     num: 29,
@@ -209,40 +212,46 @@ const grammarQuestions = [
     context: '<div class="passage-title">We\u2019re going to the zoo!</div><p>Class 5 Blue is going on <span class="blank">(29)</span> excursion to the zoo this term.</p><p>Before we leave, every student <span class="blank">(30)</span> hand in a signed permission note.</p><p>Students should bring their lunch and <span class="blank">(31)</span></p>',
     isPassageStart: true,
     options: ['a', 'this', 'an', 'some'],
-    correct: 2
+    correct: 2,
+    explanation: 'We use "an" before words that start with a vowel sound. "Excursion" starts with an "e" sound, so "an" is correct.'
   },
   {
     num: 30,
     question: 'Which word completes gap <b>(30)</b> correctly?',
     options: ['must', 'need', 'ought', 'probably'],
-    correct: 0
+    correct: 0,
+    explanation: '"Must" is the correct modal verb here because it means "has to." "Need" would require "needs to," "ought" needs "ought to," and "probably" is not a verb.'
   },
   {
     num: 31,
     question: 'Which option completes gap <b>(31)</b> correctly?',
     options: ['a drink.', 'a drink!', 'a drink?', 'a drink \u2013'],
-    correct: 0
+    correct: 0,
+    explanation: 'This is a simple instruction or statement, so it ends with a full stop (period). An exclamation mark, question mark, or dash would not be correct here.'
   },
   {
     num: 32,
     question: 'Which word completes this sentence correctly?',
     context: 'The good weather means that ____ will be possible to play the game.',
     options: ['it', 'they', 'there', 'when'],
-    correct: 0
+    correct: 0,
+    explanation: '"It" is used as a pronoun to refer to the situation (the good weather). "It will be possible" is a common English construction.'
   },
   {
     num: 33,
     question: 'Which word completes this sentence correctly?',
     context: 'Before the treasure hunt, Dad ____ clues all around the garden.',
     options: ['hid', 'hide', 'hiding', 'hidden'],
-    correct: 0
+    correct: 0,
+    explanation: '"Hid" is the past tense of "hide." Since the sentence says "Before the treasure hunt," the action already happened, so we need the simple past tense.'
   },
   {
     num: 34,
     question: 'Which word or words complete this sentence correctly?',
     context: 'The surface of Venus is extremely hot, with temperatures ____ 480\u00b0 C.',
     options: ['to reach', 'reaching', 'have reached', 'were reaching'],
-    correct: 1
+    correct: 1,
+    explanation: '"Reaching" is a present participle that acts like an adjective here, describing the temperatures. It correctly modifies "temperatures" in this sentence.'
   },
   {
     num: 35,
@@ -253,7 +262,8 @@ const grammarQuestions = [
       'Mum took us fishing on Saturday. We caught three fish and an eel.',
       'Mum took us fishing on Saturday. we caught three fish and an eel.'
     ],
-    correct: 2
+    correct: 2,
+    explanation: 'These are two complete sentences, so they need a full stop between them. The second sentence must start with a capital letter: "We caught..."'
   },
   {
     num: 36,
@@ -265,7 +275,8 @@ const grammarQuestions = [
       'saw \u00a0\u00a0\u00a0\u00a0 done',
       'saw \u00a0\u00a0\u00a0\u00a0 did'
     ],
-    correct: 3
+    correct: 3,
+    explanation: '"Saw" is the correct past tense of "see" (not "seen"), and "did" is the correct past tense of "do" (not "done"). "Seen" and "done" need a helper word like "had."'
   },
   {
     num: 37,
@@ -276,7 +287,8 @@ const grammarQuestions = [
       'At Little Athletics we learn skills, such as running jumping and throwing.',
       'At Little Athletics we learn skills, such as running, jumping and, throwing.'
     ],
-    correct: 1
+    correct: 1,
+    explanation: 'In a list of three items, commas go between each item except before "and." The correct pattern is: "running, jumping and throwing."'
   },
   {
     num: 38,
@@ -287,14 +299,16 @@ const grammarQuestions = [
       'A new AFL (Australian Football League competition) is starting soon in our district.',
       'A new (AFL Australian Football League) competition is starting soon in our district.'
     ],
-    correct: 0
+    correct: 0,
+    explanation: 'Brackets are used to add extra information that explains something. Here, "(Australian Football League)" explains what the abbreviation AFL stands for.'
   },
   {
     num: 39,
     question: 'Which word completes this sentence correctly?',
     context: '____ it is on time or not, the bus is always crowded.',
     options: ['Either', 'Unless', 'Whether', 'Although'],
-    correct: 2
+    correct: 2,
+    explanation: '"Whether...or not" is a phrase used when there are two possibilities. "Whether it is on time or not" shows two possible outcomes.'
   },
   {
     num: 40,
@@ -305,7 +319,8 @@ const grammarQuestions = [
       'Last week we hand our report in to the teacher.',
       'Later this year we went to visit my uncle in the country.'
     ],
-    correct: 1
+    correct: 1,
+    explanation: '"Two months from now it will be winter" correctly matches the future time ("from now") with the future verb ("will be"). The other sentences mix up past and present tenses.'
   },
   {
     num: 41,
@@ -317,14 +332,16 @@ const grammarQuestions = [
       'Turtles have webbed feet or flippers and live mainly in water while tortoises live on land and have round, stumpy feet.',
       'Tortoises must have round, stumpy feet when they live on land but turtles need webbed feet or flippers and live mainly in water.'
     ],
-    correct: 2
+    correct: 2,
+    explanation: 'This sentence correctly matches each animal with its own features and habitat, using "while" to clearly contrast the two animals.'
   },
   {
     num: 42,
     question: 'Which word from this sentence describes the waterfall?',
     context: 'The water crashed into the pool at the bottom of the high waterfall, filling the air with mist.',
     options: ['crashed', 'bottom', 'high', 'filling'],
-    correct: 2
+    correct: 2,
+    explanation: '"High" is an adjective that describes the waterfall. "Crashed" and "filling" are verbs, and "bottom" describes the pool, not the waterfall.'
   },
   {
     num: 43,
@@ -335,7 +352,8 @@ const grammarQuestions = [
       'The real problem with our plan is that it may be raining.',
       'When I woke up I was glad that my dream was not real.'
     ],
-    correct: 0
+    correct: 0,
+    explanation: '"Real" is an adjective and should not be used to describe a verb. "A real good time" is incorrect because "good" is an adjective, and you need the adverb "really" instead.'
   },
   {
     num: 44,
@@ -347,7 +365,8 @@ const grammarQuestions = [
       "you\u2019re \u00a0\u00a0\u00a0 your",
       "you\u2019re \u00a0\u00a0\u00a0 you\u2019re"
     ],
-    correct: 2
+    correct: 2,
+    explanation: '"You\'re" means "you are" (a contraction), and "your" shows ownership. "If you\'re staying" = "if you are staying." "Your boots" = the boots belonging to you.'
   },
   {
     num: 45,
@@ -358,14 +377,16 @@ const grammarQuestions = [
       'New guinea is a large island North of Australia.',
       'New Guinea is a large island north of Australia.'
     ],
-    correct: 3
+    correct: 3,
+    explanation: 'Proper nouns like place names ("New Guinea," "Australia") need capital letters, but common nouns like "island" and directions like "north" do not.'
   },
   {
     num: 46,
     question: 'This sentence contains an error in the use of:',
     context: "When the holiday\u2019s are over, Dad\u2019s uncle (my great uncle) is coming from Italy to visit.",
     options: ['a capital letter', 'a comma', 'an apostrophe', 'brackets'],
-    correct: 2
+    correct: 2,
+    explanation: '"Holiday\'s" is wrong because it uses an apostrophe to make a plural. Plurals don\'t need apostrophes \u2014 it should be "holidays." The apostrophe in "Dad\'s" is correct because it shows possession.'
   },
   {
     num: 47,
@@ -376,7 +397,8 @@ const grammarQuestions = [
       "The school\u2019s fastest runner is in my class.",
       "Dad\u2019s going to the river to do some fishing."
     ],
-    correct: 3
+    correct: 3,
+    explanation: 'A contraction shortens two words into one using an apostrophe. "Dad\'s" here means "Dad is" (a contraction). In the other options, the apostrophe shows possession (belonging to someone).'
   },
   {
     num: 48,
@@ -387,14 +409,16 @@ const grammarQuestions = [
       'My brother is the one he rescued the injured bird.',
       'That is the girl whose bag I found on the bus yesterday.'
     ],
-    correct: 3
+    correct: 3,
+    explanation: '"Whose" is the correct word to show that the bag belongs to the girl. The other sentences use incorrect words: "who\'s" should be "whose," "what\'s" doesn\'t fit, and "he" should be "who."'
   },
   {
     num: 49,
     question: 'Which word completes this sentence correctly?',
     context: 'A snake sheds ____ skin regularly.',
     options: ["they\u2019re", 'its', 'their', "it\u2019s"],
-    correct: 1
+    correct: 1,
+    explanation: '"Its" (without an apostrophe) shows possession \u2014 the skin belonging to the snake. "It\'s" means "it is," "they\'re" means "they are," and "their" is for plural owners.'
   },
   {
     num: 50,
@@ -405,7 +429,8 @@ const grammarQuestions = [
       'See the bright colours and patterns on the wings.',
       'Caterpillars eat leaves and then grows into a butterfly.'
     ],
-    correct: 3
+    correct: 3,
+    explanation: '"Caterpillars" is plural, so the verb should also be plural: "grow," not "grows." The subject and verb must agree in number.'
   },
   {
     num: 51,
@@ -417,7 +442,8 @@ const grammarQuestions = [
       'Lee went to the library to collect the book.',
       'Lee reserved a library book.'
     ],
-    correct: 3
+    correct: 3,
+    explanation: 'Lee must have reserved the book before all the other events, because he went to "collect the book he had reserved." The word "had" tells us this happened earliest.'
   }
 ];
 
@@ -533,7 +559,7 @@ function markTest() {
     const isCorrect = studentIndex === q.correct;
     if (isCorrect) score++;
     const studentAnswer = studentIndex >= 0 ? q.options[studentIndex] : '(no answer)';
-    results.push({ num: q.num, type: 'grammar', question: q.question, context: q.context || '', options: q.options, correctIndex: q.correct, studentIndex, studentAnswer, correctAnswer: q.options[q.correct], isCorrect });
+    results.push({ num: q.num, type: 'grammar', question: q.question, context: q.context || '', options: q.options, correctIndex: q.correct, studentIndex, studentAnswer, correctAnswer: q.options[q.correct], isCorrect, explanation: q.explanation || '' });
   });
   return { results, score, total: 51, percentage: Math.round((score / 51) * 1000) / 10 };
 }
@@ -611,6 +637,7 @@ function showResults(data) {
         <div class="preview-content">${r.question}${r.context ? '<div class="preview-context">' + r.context + '</div>' : ''}</div>
         <div class="preview-label">Options</div>
         ${optionsHtml}
+        ${!r.isCorrect && r.explanation ? '<div class="preview-label">Explanation</div><div class="preview-content" style="color:#2563eb;font-style:italic;">' + r.explanation + '</div>' : ''}
       </div>
     </div>`;
   });
